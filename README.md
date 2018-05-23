@@ -14,7 +14,7 @@ Equipment | # Of
 ----------|-----
 5 port Ethernet Switch | 1 
 5 port USB Power Adaptor * | 1 
-CAT 6 Ethernet Cables | 4 
+Ethernet Cables | 4 
 USB 2. to Micro USB B Power Cables | 3 
 Raspberry Pi3 Model B | 3 
 Heatsinks | 6 
