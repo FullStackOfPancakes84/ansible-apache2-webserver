@@ -3,7 +3,16 @@
   remote_user: pi
   become: yes 
 
-  # This runs all the tasks in the /roles/webservers/tasks/main.yml file
+  # This runs all the tasks in the /roles/common/tasks/main.yml file
+  roles:
+    - common
+
+# Interact with our loadbalancer and ensure HAProxy is up to date
+- hosts: loadbalancer
+  remote_user: pi
+  become: yes 
+
+  # This runs all the tasks in the /roles/webserver/tasks/main.yml file 
   roles:
     - webservers
 
