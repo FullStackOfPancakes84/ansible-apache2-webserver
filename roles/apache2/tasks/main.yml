@@ -1,0 +1,9 @@
+---
+# tasks file for apache2
+
+    - name: Ensure Apache is installed
+      apt: 
+        name: apache2=2.4.25-3+deb9u4
+        state: present
+
+        

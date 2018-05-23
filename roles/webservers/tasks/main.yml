@@ -1,0 +1,15 @@
+---
+# tasks file for webservers
+    - name: Indicate which servers we are deploying to 
+      script: /Users/jason/Desktop/websites/ansible/python/ledON.py
+      changed_when: false
+
+    - name: Upgrade packages
+      apt: upgrade=yes
+
+    - name: Remove any unused dependency packages except build-dep
+      apt: autoremove=yes
+
+    - name: Indicate which servers we are deploying to 
+      script: /Users/jason/Desktop/websites/ansible/python/ledOFF.py
+      changed_when: false
