@@ -37,7 +37,7 @@
     # Change this to whatever directory your Ansible playbook lives in 
     # Ex: /some-folder/another-folder/ansible/python/ledON.py
     - name: Visually indicate which server we are deploying to
-      script: /Users/jason/Desktop/websites/ansible/python/ledON.py
+      script: ./python/ledON.py
       changed_when: false
 
     # Apache's default web directory is /var/www/html on the Pi
@@ -50,7 +50,7 @@
     # Change this to whatever directory your Ansible playbook lives in 
     # Ex: /some-folder/another-folder/ansible/python/ledON.py
     - name: Visually indicate that we are done deplying to the server
-      script: /Users/jason/Desktop/websites/ansible/python/ledOFF.py
+      script: ./python/ledOFF.py
       changed_when: false
 
 # Deploy the custom index file to node 3
@@ -64,7 +64,7 @@
     # Change this to whatever directory your Ansible playbook lives in 
     # Ex: /some-folder/another-folder/ansible/python/ledON.py
     - name: Visually indicate which server we are deploying to
-      script: /Users/jason/Desktop/websites/ansible/python/ledON.py 
+      script: ./python/ledON.py 
       changed_when: false
     
     # Apache's default web directory is /var/www/html on the Pi
@@ -77,5 +77,5 @@
     # Change this to whatever directory your Ansible playbook lives in 
     # Ex: /some-folder/another-folder/ansible/python/ledON.py
     - name: Visually indicate that we are done deplying to the server
-      script: /Users/jason/Desktop/websites/ansible/python/ledOFF.py
+      script: ./python/ledOFF.py
       changed_when: false

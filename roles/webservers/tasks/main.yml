@@ -4,7 +4,7 @@
     # Change the script src to match your local environment
     # Ex: /your-folder/location/ansible/python/ledON.py
     - name: Visually indicate which loadbalancer node that we are deploying to
-      script: /Users/jason/Desktop/websites/ansible/python/ledON.py
+      script: ./python/ledON.py
       changed_when: false
 
     - name: Check to see that HAProxy is installed
@@ -15,5 +15,5 @@
     # Change the script src to match your local environment
     # Ex: /your-folder/location/ansible/python/ledOFF.py
     - name: Visually indicate that we are done deploying to the node
-      script: /Users/jason/Desktop/websites/ansible/python/ledOFF.py
+      script: ./python/ledOFF.py
       changed_when: false

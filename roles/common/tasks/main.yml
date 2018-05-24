@@ -4,7 +4,7 @@
     # Change the script location to match where Ansible is placed locally in your system
     # Ex: /your-folder/location/ansible/python/ledON.py
     - name: Indicate which servers we are deploying to 
-      script: /Users/jason/Desktop/websites/ansible/python/ledON.py
+      script: ./python/ledON.py
       changed_when: false
 
     - name: Update package lists
@@ -19,5 +19,5 @@
     # Change the script location to match where Ansible is placed locally in your system
     # Ex: /your-folder/location/ansible/python/ledOFF.py
     - name: Indicate which servers we are done deploying to 
-      script: /Users/jason/Desktop/websites/ansible/python/ledOFF.py
+      script: ./python/ledOFF.py
       changed_when: false
