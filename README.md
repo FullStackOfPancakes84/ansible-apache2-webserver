@@ -80,8 +80,29 @@ backend nodes
     mode http
     balance roundrobin
     option forwardfor header X-Client
-    server node2 192.168.0.16:80 maxconn 32 
+    server node2 192.168.0.16:80 maxconn 32
     server node3 192.168.0.58:80 maxconn 32
+
+listen stats
+    bind 0.0.0.0:9000       #Listen on all IP's on port 9000
+    mode http
+    balance
+    timeout client 5000
+    timeout connect 4000
+    timeout server 30000
+
+    #This is the virtual URL to access the stats page
+    stats uri /haproxy_stats
+
+    #Authentication realm. This can be set to anything. Escape space characters with a backslash.
+    stats realm HAProxy\ Statistics
+
+    #The user/pass you want to use. Change this password!
+    stats auth admin:password
+
+    #This allows you to take down and bring up back end servers.
+    #This will produce an error on older versions of HAProxy.
+    stats admin if TRUE
 ```
 
 Exit and save the file.
