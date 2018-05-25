@@ -56,7 +56,7 @@ For a more detailed explanation of what HAProxy is, check out their website at h
 3. `> /etc/haproxy/haproxy.cfg`
 4. `sudo nano /etc/haproxy/haproxy.cfg`
 
-Your haproxy.cfg file should now be a blank slate. Copy and paste the following code into it, taking care to replace the IP addresses in the bottom two lines with those of your remaining 2 pi's.
+Your haproxy.cfg file should now be a blank slate. Copy and paste the following code into it, taking care to replace the IP addresses mentioned with those of your remaining 2 pi's.
 
 5. 
 ```
@@ -80,8 +80,8 @@ backend nodes
     mode http
     balance roundrobin
     option forwardfor header X-Client
-    server node2 192.168.0.16:80 maxconn 32
-    server node3 192.168.0.58:80 maxconn 32
+    server node2 192.168.0.16:80 maxconn 32 # <-- Change this IP to your first node address
+    server node3 192.168.0.58:80 maxconn 32 # <-- Change this IP to your second node address
 
 listen stats
     bind 0.0.0.0:9000       #Listen on all IP's on port 9000
