@@ -23,8 +23,8 @@ Heatsinks | 6
 
 <br>
 
-1. Connect x1 CAT 6 Ethernet Cable from your router to the Ethernet Switch.
-2. Connect x1 CAT 6 Ethernet Cable from your Ethernet Switch to each one of your Pi's
+1. Connect x1 Ethernet Cable from your router to the Ethernet Switch.
+2. Connect x1 Ethernet Cable from your Ethernet Switch to each one of your Pi's
 3. Connect x1 USB-to-MicroUSB from each of your Pi's to the USB Power Adaptor.
 4. Plug it all in and look at the blinky lights :wink:
 
