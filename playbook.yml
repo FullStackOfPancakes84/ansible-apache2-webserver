@@ -43,7 +43,7 @@
     # Apache's default web directory is /var/www/html on the Pi
     - name: Deploy updated index.html file 
       copy: 
-        src: ./html/index-1.html
+        src: "{{ source }}"
         dest: /var/www/html/index.html
         mode: 0644
 
@@ -70,7 +70,7 @@
     # Apache's default web directory is /var/www/html on the Pi
     - name: Deploy updated index.html file 
       copy: 
-        src: ./html/index-2.html
+        src: "{{ source }}"
         dest: /var/www/html/index.html
         mode: 0644
 
