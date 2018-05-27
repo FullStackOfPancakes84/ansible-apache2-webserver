@@ -1,0 +1,2 @@
+source: ./html/index-1.html
+dest: /var/www/html/index.html
