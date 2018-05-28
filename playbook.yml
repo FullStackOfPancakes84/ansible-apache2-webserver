@@ -34,8 +34,6 @@
 
   tasks:
 
-    # Change this to whatever directory your Ansible playbook lives in 
-    # Ex: /some-folder/another-folder/ansible/python/ledON.py
     - name: Visually indicate which server we are deploying to
       script: ./python/ledON.py
       changed_when: false
@@ -47,8 +45,6 @@
         dest: "{{ dest }}"
         mode: 0644
 
-    # Change this to whatever directory your Ansible playbook lives in 
-    # Ex: /some-folder/another-folder/ansible/python/ledON.py
     - name: Visually indicate that we are done deplying to the server
       script: ./python/ledOFF.py
       changed_when: false
@@ -61,8 +57,6 @@
 
   tasks:
 
-    # Change this to whatever directory your Ansible playbook lives in 
-    # Ex: /some-folder/another-folder/ansible/python/ledON.py
     - name: Visually indicate which server we are deploying to
       script: ./python/ledON.py 
       changed_when: false
@@ -74,8 +68,6 @@
         dest: "{{ dest }}"
         mode: 0644
 
-    # Change this to whatever directory your Ansible playbook lives in 
-    # Ex: /some-folder/another-folder/ansible/python/ledON.py
     - name: Visually indicate that we are done deplying to the server
       script: ./python/ledOFF.py
       changed_when: false
