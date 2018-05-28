@@ -26,10 +26,37 @@
   roles:
     - apache2
 
+# Deploy the custom index file to node 2  
+- hosts: node2
+  remote_user: pi
+  become: yes
+  gather_facts: no
+
   tasks:
 
-    # Change this to whatever directory your Ansible playbook lives in 
-    # Ex: /some-folder/another-folder/ansible/python/ledON.py
+    - name: Visually indicate which server we are deploying to
+      script: ./python/ledON.py
+      changed_when: false
+
+    # Apache's default web directory is /var/www/html on the Pi
+    - name: Deploy updated index.html file 
+      copy: 
+        src: "{{ source }}"
+        dest: "{{ dest }}"
+        mode: 0644
+
+    - name: Visually indicate that we are done deplying to the server
+      script: ./python/ledOFF.py
+      changed_when: false
+
+# Deploy the custom index file to node 3
+- hosts: node3
+  remote_user: pi
+  become: yes
+  gather_facts: no
+
+  tasks:
+
     - name: Visually indicate which server we are deploying to
       script: ./python/ledON.py 
       changed_when: false
@@ -41,8 +68,6 @@
         dest: "{{ dest }}"
         mode: 0644
 
-    # Change this to whatever directory your Ansible playbook lives in 
-    # Ex: /some-folder/another-folder/ansible/python/ledON.py
     - name: Visually indicate that we are done deplying to the server
       script: ./python/ledOFF.py
       changed_when: false

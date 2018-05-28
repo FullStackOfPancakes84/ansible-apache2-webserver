@@ -1,11 +1,19 @@
 ---
 # tasks file for common
 
-    # Change the script location to match where Ansible is placed locally in your system
-    # Ex: /your-folder/location/ansible/python/ledON.py
     - name: Indicate which servers we are deploying to 
       script: ./python/ledON.py
       changed_when: false
+
+    - name: Grab the latest temperature of our Pi's
+      command: /opt/vc/bin/vcgencmd measure_temp
+      register: temp
+
+    - name: Write the recent temperature to a log file
+      copy: content="{{ temp }}" dest=temp.log
+
+    - debug:
+        msg: "{{ temp['stdout_lines'] }}"
 
     - name: Update package lists
       apt: update_cache=yes
@@ -16,8 +24,6 @@
     - name: Remove any unused dependency packages except build-dep
       apt: autoremove=yes
 
-    # Change the script location to match where Ansible is placed locally in your system
-    # Ex: /your-folder/location/ansible/python/ledOFF.py
     - name: Indicate which servers we are done deploying to 
       script: ./python/ledOFF.py
       changed_when: false
