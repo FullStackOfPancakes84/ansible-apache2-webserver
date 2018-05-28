@@ -38,7 +38,7 @@
     - name: Deploy updated index.html file 
       copy: 
         src: "{{ source }}"
-        dest: /var/www/html/index.html
+        dest: "{{ dest }}"
         mode: 0644
 
     # Change this to whatever directory your Ansible playbook lives in 
