@@ -12,6 +12,19 @@
         name: haproxy
         state: present
 
+    - name: Push HAProxy configuration to the loadbalancer
+      template:
+        src: templates/haproxy.cfg.j2
+        dest: /etc/haproxy/haproxy.cfg
+        owner: root
+        group: root
+        mode: 0640
+      register: update_config
+
+    - name: Restart our HAProxy service
+      command: /etc/init.d/haproxy restart
+      when: update_config.changed
+
     # Change the script src to match your local environment
     # Ex: /your-folder/location/ansible/python/ledOFF.py
     - name: Visually indicate that we are done deploying to the node

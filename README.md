@@ -53,61 +53,8 @@ For a more detailed explanation of what HAProxy is, check out their website at h
 
 1. `ssh pi@192.168.0.228`
 2. `pi@pi-headnode:~ sudo apt-get install haproxy`
-3. `> /etc/haproxy/haproxy.cfg`
-4. `sudo nano /etc/haproxy/haproxy.cfg`
 
-Your haproxy.cfg file should now be a blank slate. Copy and paste the following code into it, taking care to replace the IP addresses mentioned with those of your remaining 2 pi's.
-
-5. 
-```
-global
-  daemon
-  maxconn 256
-
-defaults
-  mode  http
-  timeout connect 5000ms
-  timeout client 50000ms
-  timeout server 50000ms
-
-frontend pi-headnode
-    bind *:80
-    mode http
-    use_backend nodes
-    default_backend nodes
-
-backend nodes
-    mode http
-    balance roundrobin
-    option forwardfor header X-Client
-    server node2 192.168.0.16:80 maxconn 32 # <-- Change this IP to your first node address
-    server node3 192.168.0.58:80 maxconn 32 # <-- Change this IP to your second node address
-
-listen stats
-    bind 0.0.0.0:9000       #Listen on all IP's on port 9000
-    mode http
-    balance
-    timeout client 5000
-    timeout connect 4000
-    timeout server 30000
-
-    #This is the virtual URL to access the stats page
-    stats uri /haproxy_stats
-
-    #Authentication realm. This can be set to anything. Escape space characters with a backslash.
-    stats realm HAProxy\ Statistics
-
-    #The user/pass you want to use. Change this password!
-    stats auth admin:password
-
-    #This allows you to take down and bring up back end servers.
-    #This will produce an error on older versions of HAProxy.
-    stats admin if TRUE
-```
-
-Exit and save the file.
-
-6. Next, you'll want to edit your default HAProxy file to ensure it is enabled and using your .cfg script. 
+3. Next, you'll want to edit your default HAProxy file to ensure it is enabled and using your .cfg script. 
 
 `sudo nano /etc/default/haproxy`
 
@@ -129,7 +76,7 @@ ENABLED=1 # <-- Make sure this is set to 1 and uncommented
 
 Save the file and exit it.
 
-7. Next, restart HAProxy by typing:
+4. Next, restart HAProxy by typing:
 `sudo /etc/init.d/haproxy restart`
 
 ### Final Steps - Ansible
