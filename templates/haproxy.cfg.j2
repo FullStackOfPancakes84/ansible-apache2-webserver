@@ -1,0 +1,44 @@
+global
+  daemon
+  maxconn 256
+
+defaults
+  mode  http
+  timeout connect 5000ms
+  timeout client 50000ms
+  timeout server 50000ms
+
+frontend pi-headnode
+    bind *:80
+    mode http
+    use_backend nodes
+    default_backend nodes
+
+backend nodes
+    mode http
+    balance roundrobin
+    option forwardfor header X-Client
+{% for host in groups['nodes'] %}
+    server {{ hostvars[host]['ansible_hostname'] }} {{ hostvars[host]['ansible_default_ipv4']['address'] }}:80 maxconn 32
+{% endfor %}
+
+listen stats
+    bind 0.0.0.0:9000       #Listen on all IP's on port 9000
+    mode http
+    balance
+    timeout client 5000
+    timeout connect 4000
+    timeout server 30000
+
+    #This is the virtual URL to access the stats page
+    stats uri /haproxy_stats
+
+    #Authentication realm. This can be set to anything. Escape space characters with a backslash.
+    stats realm HAProxy\ Statistics
+
+    #The user/pass you want to use. Change this password!
+    stats auth admin:password
+
+    #This allows you to take down and bring up back end servers.
+    #This will produce an error on older versions of HAProxy.
+    stats admin if TRUE
