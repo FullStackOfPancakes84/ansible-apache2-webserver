@@ -35,7 +35,7 @@ You'll need to know the IP addresses of each of the Pi's on your local network. 
 
 Next, copy your SSH key to each of your Pi's by using the following:
 `ssh-copy-id <USER-NAME>@<IP-ADDRESS>`
-Ex: `ssh-copy-id pi@192.168.0.228` 
+Ex: `ssh-copy-id -i ~/.ssh/id_rsa.pub pi@192.168.0.228` 
 
 <br>
 
