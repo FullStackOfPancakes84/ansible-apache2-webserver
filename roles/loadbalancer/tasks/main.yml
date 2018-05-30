@@ -1,5 +1,5 @@
 ---
-# tasks file for webservers
+# tasks file for loadbalancer
 
     - name: Visually indicate which loadbalancer node that we are deploying to
       script: ./python/ledON.py
@@ -10,7 +10,7 @@
         name: haproxy
         state: present
 
-    - name: Push HAProxy configuration to the loadbalancer
+    - name: Push HAProxy Jinja2 template configuration file to the loadbalancer
       template:
         src: templates/haproxy.cfg.j2
         dest: /etc/haproxy/haproxy.cfg
@@ -19,9 +19,18 @@
         mode: 0640
       register: update_config
 
+    - name: Push our default HAProxy settings to the loadbalancer
+      template:
+        src: templates/haproxy
+        dest: /etc/default/haproxy
+        owner: root
+        group: root
+        mode: 0640
+      register: update_default
+
     - name: Restart our HAProxy service
       command: /etc/init.d/haproxy restart
-      when: update_config.changed
+      when: update_config.changed or update_default.changed
 
     - name: Visually indicate that we are done deploying to the node
       script: ./python/ledOFF.py

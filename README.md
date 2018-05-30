@@ -40,8 +40,6 @@ Next, copy your public SSH key to each of your Pi's by using the following:
 
 Ex: `ssh-copy-id -i ~/.ssh/id_rsa.pub pi@192.168.0.228` 
 
-<br>
-
 Don't have an SSH key? No problem! Just run `ssh-keygen` in your terminal and follow the prompts.
 
 <br>
@@ -49,38 +47,6 @@ Don't have an SSH key? No problem! Just run `ssh-keygen` in your terminal and fo
 _We're almost there!_
 
 <br><br>
-
-### Install & Configure HAProxy
-For a more detailed explanation of what HAProxy is, check out their website at https://www.haproxy.org/
-1 of your Pi's will act as the HAProxy load balancer. SSH into your chosen Pi and install HAProxy via apt.
-
-1. `ssh pi@192.168.0.228`
-2. `pi@pi-headnode:~ sudo apt-get install haproxy`
-
-3. Next, you'll want to edit your default HAProxy file to ensure it is enabled and using your .cfg script. 
-
-`sudo nano /etc/default/haproxy`
-
-You'll see the following code:
-
-```
-# Defaults file for HAProxy
-#
-# This is sourced by both, the initscript and the systemd unit file, so do not
-# treat it as a shell script fragment.
-
-# Change the config file location if needed
-CONFIG="/etc/haproxy/haproxy.cfg" # <-- make sure this uncommented
-
-# Add extra flags here, see haproxy(1) for a few options
-#EXTRAOPTS="-de -m 16"
-ENABLED=1 # <-- Make sure this is set to 1 and uncommented
-```    
-
-Save the file and exit it.
-
-4. Next, restart HAProxy by typing:
-`sudo /etc/init.d/haproxy restart`
 
 ### Final Steps - Ansible
 If you've made it this far, congratulations! You're just a few minutes away from running your very own distributed computing network.

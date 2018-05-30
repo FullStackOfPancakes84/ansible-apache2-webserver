@@ -12,9 +12,6 @@
     - name: Write the recent temperature to a log file
       copy: content="{{ temp }}" dest=temp.log
 
-    - debug:
-        msg: "{{ temp['stdout_lines'] }}"
-
     - name: Update package lists
       apt: update_cache=yes
 
