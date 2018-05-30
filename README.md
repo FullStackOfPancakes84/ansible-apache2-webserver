@@ -33,8 +33,11 @@ Heatsinks | 6
 ### Configure your Pi's
 You'll need to know the IP addresses of each of the Pi's on your local network. If you're a CLI ninja, this should be easy-peasy. For everyone else, you can use a free IP Scanner, such as SuperScan (OSX). Write these #'s down.
 
-Next, copy your SSH key to each of your Pi's by using the following:
-`ssh-copy-id <USER-NAME>@<IP-ADDRESS>`
+Next, copy your public SSH key to each of your Pi's by using the following:
+`ssh-copy-id -i ~/.ssh/id_rsa.pub <USER-NAME>@<IP-ADDRESS>`
+
+<br>
+
 Ex: `ssh-copy-id -i ~/.ssh/id_rsa.pub pi@192.168.0.228` 
 
 <br>
