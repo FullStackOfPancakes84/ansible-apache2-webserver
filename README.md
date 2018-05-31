@@ -58,7 +58,7 @@ On your local computer / laptop, you'll want to install Ansible from the command
 2. Now, you'll want to clone this repo into a folder OR download the .ZIP and extract it into a folder on your local machine. Finally, edit the hosts.ini file
 ```
 [loadbalancer]
-pi-headnode ansible_host=192.168.0.228  # <--- Change this to the ip address of the Pi that you installed HAProxy on.
+pi-headnode ansible_host=192.168.0.228  # <--- Change this to the ip address of the Pi that you want to act as your load balancer
 
 [nodes]
 node2 ansible_host=192.168.0.16 # <--- Change this to the ip address of your second Pi
